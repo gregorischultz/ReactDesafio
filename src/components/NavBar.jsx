@@ -2,13 +2,16 @@ import React from "react";
 
 
 
-function NavBar ({pokemonPrecedent, pokemonSuivant}) {
+function NavBar ({pokemonList, onPokemonSelect}) {
     return (
         <nav>
-          <button onClick={pokemonPrecedent}>Precedent</button> 
-          <button onClick={pokemonSuivant}>Suivant</button>
+          {pokemonList.map((pokemon, index) => (
+            <button key={pokemon.name} onClick={() => onPokemonSelect(index)}>
+              {pokemon.name}
+            </button>
+          ))}
         </nav>
-      )
-}
+      );
+    }
 
 export default NavBar;

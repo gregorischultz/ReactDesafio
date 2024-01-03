@@ -40,11 +40,14 @@ function App() {
   const pokemonSuivant = () => {
     setpokemonIndex (prevIndex => prevIndex < pokemonList.length - 1 ? prevIndex + 1 : 0);
   }
+const selectedPokemon = pokemonList[pokemonIndex];
 
-  const selectedPokemon = pokemonList[pokemonIndex];
+const handlePokemonSelect = (index) => {
+  setpokemonIndex(index);
+};
   return (
     <div>
-      <NavBar pokemonPrecedent={pokemonPrecedent} pokemonSuivant={pokemonSuivant}/>
+      <NavBar pokemonList={pokemonList} onPokemonSelect={handlePokemonSelect}/>
       <PokemonCard pokemon={selectedPokemon}/>
     </div>
   );
